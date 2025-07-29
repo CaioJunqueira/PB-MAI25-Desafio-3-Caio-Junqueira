@@ -1,0 +1,57 @@
+
+#cadastro-usuarios-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--primary-black);
+}
+
+.input {
+    font-family: 'Inter', sans-serif;
+    border-radius: 10px;
+    border: 1px solid #bebebe;
+    background: var(--primary-white);
+    width: 400px;
+    height: 38px;
+    outline: none;
+    padding: 10px 14px;
+    margin: 0px;
+
+    &:focus{
+        border: 1px solid #bebebe;
+    }
+
+    &::placeholder{
+        color: var(--primary-stroke-gray);
+        font-size: 14px;
+        font-weight: 400;
+    }
+}
+
+.register-button {
+    font-size: 14px;
+    font-weight: 500;
+    width: 400px;
+    height: 38px;
+    border-radius: 10px;
+    margin-top: 20px;
+    background-color: var(--primary-light-green);
+    color: var(--primary-white);
+
+    &:hover {
+        background-color: var(--primary-dark-green);
+    }
+}

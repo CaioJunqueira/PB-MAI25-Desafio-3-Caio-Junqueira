@@ -3,14 +3,21 @@ import "@fontsource/inter/500.css"; //medium
 import "@fontsource/inter/600.css"; //semi bold
 import "@fontsource/inter/700.css"; //bold
 
-import './style.css'
+import "./styles/globalStyle.css";
+import "./styles/colors.css";
+import { renderRoute } from "./router";
+import { createHeader } from "./components/Header/header";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
+const app = document.querySelector<HTMLDivElement>("#app")!;
 
-    <h1>Vite + TypeScript</h1>
+createHeader(); // insere o header no body (como já está na função)
 
+app.innerHTML = `
+  <main id="page-content"></main>
+`;
 
-  </div>
-`
+// Primeira renderização
+renderRoute();
 
+// Escuta mudanças na hash (navegação)
+window.addEventListener("hashchange", renderRoute);

@@ -1,0 +1,14 @@
+.form-container {
+  background-color: var(--primary-white);
+  border: 1px solid var(--primary-stroke-gray);
+  border-radius: 10px;
+  padding: 24px;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.form-container h2 {
+  margin-bottom: 36px;
+  font-size: 20px;
+  color: var(--primary-black);
+}
