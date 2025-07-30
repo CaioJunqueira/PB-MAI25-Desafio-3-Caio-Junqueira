@@ -1,3 +1,12 @@
+.title {
+  margin-bottom: 15px;
+}
+
+.description {
+  margin-bottom: 20px;
+
+}
+
 .book-table {
   width: 100%;
   border-collapse: collapse;
@@ -6,25 +15,74 @@
 
 .book-table th,
 .book-table td {
-  border: 1px solid #ccc;
+  border: 1px solid var(--primary-stroke-gray);
   padding: 0.75rem;
   text-align: left;
 }
 
 .book-table th {
-  background-color: #f5f5f5;
+  background-color: var(--primary-light-green);
+  color: var(--primary-white);
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.book-table td {
+  background-color: var(--primary-white);
+  color: var(--primary-black);
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
 }
 
 .action-button {
-  margin-right: 0.5rem;
-  padding: 0.25rem 0.75rem;
-  border: none;
-  background-color: #4caf50;
-  color: white;
-  cursor: pointer;
-  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  width: 140px;
+  height: 38px;
+  border-radius: 10px;
+  background-color: var(--primary-light-green);
+  color: var(--primary-white);
+
+  &:hover {
+    background-color: var(--primary-dark-green);
+  }
 }
 
-.action-button:hover {
-  background-color: #45a049;
+.button-icon {
+  width: 20px;
+  margin-right: 8px;
+}
+
+.button-icon.edit {
+  width: 17px;
+}
+
+.button-icon.delete {
+  width: 15px;
+}
+
+.action-button.editar {
+  background-color: var(--primary-white);
+  border: 2px solid var(--primary-light-green);
+  color: var(--primary-light-green);
+
+  &:hover {
+    background-color: #f0ffc9;
+  }
+}
+
+.action-button.excluir {
+  background-color: rgb(245, 8, 8);
+
+  &:hover {
+    background-color: rgb(192, 0, 0);
+  }
 }
