@@ -4,7 +4,6 @@
 
 .description {
   margin-bottom: 20px;
-
 }
 
 .user-table {
@@ -86,3 +85,8 @@
     background-color: rgb(192, 0, 0);
   }
 }
+
+.input.form {
+  margin-top: 10px;
+}
+

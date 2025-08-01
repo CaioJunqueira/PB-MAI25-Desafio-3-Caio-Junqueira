@@ -1,6 +1,7 @@
 import { createFormSection } from "../../components/FormSection/formSection";
 import api from "../../services/axios";
 import "./style.css";
+import { InfoModal } from "../../components/InfoModal/infoModal";
 
 export function cadastrarUsuarios(): string {
   const form = `
@@ -16,13 +17,17 @@ export function cadastrarUsuarios(): string {
   const container = createFormSection("Cadastrar novo usuário", form);
 
   setTimeout(() => {
-    const formElement = document.getElementById("cadastro-usuarios-form") as HTMLFormElement;
+    const formElement = document.getElementById(
+      "cadastro-usuarios-form"
+    ) as HTMLFormElement;
 
     if (formElement) {
       formElement.addEventListener("submit", async (event) => {
         event.preventDefault();
 
-        const nomeInput = (document.getElementById("nome") as HTMLInputElement).value.trim();
+        const nomeInput = (
+          document.getElementById("nome") as HTMLInputElement
+        ).value.trim();
 
         if (!nomeInput) {
           alert("⚠️ Informe o nome do usuário antes de cadastrar!");
@@ -34,12 +39,22 @@ export function cadastrarUsuarios(): string {
             nome: nomeInput,
           });
 
-          alert("✅ Usuário cadastrado com sucesso!");
+          new InfoModal(
+            "Sucesso!",
+            "Usuário cadastrado com sucesso!",
+            () => {},
+            false
+          ).show();
           formElement.reset();
           console.log("Resposta da API:", response.data);
         } catch (error) {
           console.error(error);
-          alert("❌ Erro ao cadastrar usuário. Tente novamente.");
+          new InfoModal(
+            "Erro ao cadastrar",
+            "Verifique os dados e tente novamente.",
+            () => {},
+            true
+          ).show();
         }
       });
     }

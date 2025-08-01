@@ -1,5 +1,6 @@
 import { createFormSection } from "../../components/FormSection/formSection";
 import api from "../../services/axios";
+import { InfoModal } from "../../components/InfoModal/infoModal";
 import "./style.css";
 
 export function cadastrarLivros(): string {
@@ -38,7 +39,12 @@ export function cadastrarLivros(): string {
         const anoPublicacao = (document.getElementById("anoPublicacao") as HTMLInputElement).value.trim();
 
         if (!titulo || !autor || !anoPublicacao) {
-          alert("⚠️ Preencha todos os campos antes de cadastrar!");
+          new InfoModal(
+            "Campos obrigatórios",
+            "⚠️ Preencha todos os campos antes de cadastrar.",
+            () => {},
+            true
+          ).show();
           return;
         }
 
@@ -49,12 +55,23 @@ export function cadastrarLivros(): string {
             anoPublicacao,
           });
 
-          alert("✅ Livro cadastrado com sucesso!");
+          new InfoModal(
+            "Sucesso!",
+            "Livro cadastrado com sucesso!",
+            () => {},
+            false
+          ).show();
+
           formElement.reset();
           console.log("Livro cadastrado:", response.data);
         } catch (error) {
           console.error(error);
-          alert("❌ Erro ao cadastrar livro. Verifique os dados e tente novamente.");
+          new InfoModal(
+            "Erro ao cadastrar",
+            "Verifique os dados e tente novamente.",
+            () => {},
+            true
+          ).show();
         }
       });
     }

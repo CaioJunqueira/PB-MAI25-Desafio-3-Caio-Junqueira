@@ -1,0 +1,120 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(50%, -50%);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translate(50%, -50%);
+  }
+  to {
+    opacity: 0;
+    transform: translate(50%, -60%);
+  }
+}
+
+.confirm-modal-background {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.confirm-modal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  z-index: 11000;
+  width: 356px;
+  min-height: 168px;
+  background-color: var(--primary-white);
+  border-radius: 10px;
+  gap: 14px;
+  padding-top: 24px;
+  border: 2px solid var(--primary-stroke-gray);
+  animation: fadeIn 0.3s ease forwards;
+  font-family: "Inter", sans-serif;
+}
+
+.confirm-modal-container.closing {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+.confirm-modal-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.confirm-modal-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 252px;
+  gap: 10px;
+}
+
+.confirm-modal-title {
+  color: var(--primary-black);
+  font-size: 17px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.confirm-modal-text {
+  color: var(--subtitle-gray);
+  font-size: 14px;
+  text-align: center;
+  font-weight: 400;
+}
+
+.confirm-modal-footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-top: 1px solid var(--primary-stroke-gray);
+  padding: 17px 14px;
+  gap: 16px;
+}
+
+.confirm-modal-footer button {
+  width: 149px;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.confirm-modal-btn-cancelar {
+  background: var(--primary-white);
+  border: 2px solid var(--primary-light-green);
+  color: var(--primary-light-green);
+
+  &:hover {
+    background-color: #f0ffc9;
+  }
+}
+
+.confirm-modal-btn-confirmar {
+  background: var(--primary-light-green);
+  border: none;
+  color: var(--primary-white);
+
+  &:hover {
+    background-color: var(--primary-dark-green);
+  }
+}

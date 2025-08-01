@@ -1,0 +1,143 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    top: -5%;
+  }
+  to {
+    opacity: 1;
+    top: 0%;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    top: 0%;
+  }
+  to {
+    opacity: 0;
+    top: -5%;
+  }
+}
+
+.form-modal-background {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.form-modal-wrapper {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.form-modal-wrapper.closing {
+  animation: fadeOut 0.5s ease forwards;
+}
+
+.form-modal-container {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  min-height: 307px;
+  max-height: 566px;
+  background-color: var(--primary-white);
+  border-radius: 10px;
+  border: 2px solid var(--primary-stroke-gray);
+  overflow: hidden;
+  padding-top: 74px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 74px;
+  border-bottom: 1px solid var(--primary-stroke-gray);
+  padding: 0 30px;
+  position: absolute;
+  transform: translate(0%, -100%);
+  color: var(--primary-black);
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.form-modal-main-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  flex: 1;
+  overflow-y: auto;
+  padding: 30px;
+}
+
+.form-modal-main-content-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.form-modal-main-content-wrapper::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.modal-main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 74px;
+  border-top: 1px solid var(--primary-stroke-gray);
+  padding: 0 27px;
+  gap: 18px;
+}
+
+.form-modal-footer button {
+  width: 189px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.form-modal-btn-cancelar {
+  background: var(--primary-white);
+  border: 2px solid var(--primary-light-green);
+  color: var(--primary-light-green);
+
+  &:hover {
+    background-color: #f0ffc9;
+  }
+}
+
+.form-modal-btn-confirmar {
+  background: var(--primary-light-green);
+  border: none;
+  color: var(--primary-white);
+
+  &:hover {
+    background-color: var(--primary-dark-green);
+  }
+}
