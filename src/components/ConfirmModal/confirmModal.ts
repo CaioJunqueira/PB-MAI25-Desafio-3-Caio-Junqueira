@@ -24,7 +24,7 @@ export class ConfirmModal {
     this.onCancel = onCancel;
     this.iconPath = iconPath;
 
-    // Criação do modal
+    
     this.modalElement = document.createElement("div");
     this.modalElement.className = "confirm-modal-background";
 
@@ -46,7 +46,7 @@ export class ConfirmModal {
       ".confirm-modal-container"
     ) as HTMLElement;
 
-    // Eventos
+  
     this.modalElement
       .querySelector(".confirm-modal-btn-cancelar")!
       .addEventListener("click", () => this.handleCancel());

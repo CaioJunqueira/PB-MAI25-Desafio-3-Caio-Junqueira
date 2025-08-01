@@ -8,7 +8,7 @@ export function cadastrarUsuarios(): string {
     <form id="cadastro-usuarios-form">
       <div class="input-group">
         <label for="nome">Nome do usuário</label>
-        <input type="text" id="nome" name="nome" placeholder="Digite o nome do usuário" class="input" required />
+        <input type="text" id="nome" name="nome" placeholder="Digite o nome do usuário" class="input-users" required />
       </div>
       <button type="submit" class="register-button">Cadastrar Usuário</button>
     </form>

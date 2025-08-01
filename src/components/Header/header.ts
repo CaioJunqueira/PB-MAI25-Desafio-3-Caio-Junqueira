@@ -1,10 +1,12 @@
 import "./style.css";
 
 export function createHeader() {
-  // Cria o HTML do header
   const headerHTML = `
     <header class="header">
       <h1 class="header-logo">MyLibrary</h1>
+      
+      <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
+      
       <nav class="header-nav">
         <a href="#acervo-de-livros" class="nav-link">Acervo de livros</a>
         <a href="#cadastrar-livros" class="nav-link">Cadastrar livros</a>
@@ -14,26 +16,25 @@ export function createHeader() {
     </header>
   `;
 
-  // Insere o HTML no topo do body
   document.body.insertAdjacentHTML("afterbegin", headerHTML);
 
-  // Lógica para ativar o link atual com base no hash da URL
-  const currentHash = window.location.hash;
   const navLinks = document.querySelectorAll('.nav-link');
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.header-nav');
 
-  navLinks.forEach(link => {
-    if (link.getAttribute('href') === currentHash) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
-  });
-
-  // Atualiza os links quando mudar de hash
-  window.addEventListener('hashchange', () => {
-    const newHash = window.location.hash;
+  const setActiveLink = () => {
+    const currentHash = window.location.hash;
     navLinks.forEach(link => {
-      link.classList.toggle('active', link.getAttribute('href') === newHash);
+      link.classList.toggle('active', link.getAttribute('href') === currentHash);
     });
+  };
+
+  setActiveLink();
+
+  window.addEventListener('hashchange', setActiveLink);
+
+  menuToggle?.addEventListener('click', () => {
+    nav?.classList.toggle('show');
   });
 }
+

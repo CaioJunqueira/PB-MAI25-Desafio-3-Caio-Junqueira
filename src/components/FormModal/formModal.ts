@@ -43,7 +43,7 @@ export class FormModal {
       ".form-modal-wrapper"
     ) as HTMLElement;
 
-    // Eventos de botões
+
     this.modalElement
       .querySelector(".form-modal-btn-cancelar")!
       .addEventListener("click", () => this.handleClose(this.onCancel));

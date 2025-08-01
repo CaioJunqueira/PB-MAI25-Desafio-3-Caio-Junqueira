@@ -126,6 +126,10 @@
   justify-content: center;
   width: 370px;
   word-break: break-word;
+
+  @media (max-width: 450px) {
+    width: 100%;
+  }
 }
 
 .modal-description-text {
@@ -137,6 +141,10 @@
   flex-direction: column;
   gap: 2px;
   width: 360px;
+
+  @media (max-width: 450px) {
+    width: 85%;
+  }
 }
 
 .book-item {
@@ -146,6 +154,10 @@
   font-size: 14px;
   line-height: 1.5;
   border: 1px solid var(--primary-stroke-gray);
+
+  @media (max-width: 450px) {
+    width: 100%;
+  }
 }
 
 .book-title {

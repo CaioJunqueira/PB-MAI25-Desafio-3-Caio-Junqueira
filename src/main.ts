@@ -10,14 +10,12 @@ import { createHeader } from "./components/Header/header";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
 
-createHeader(); // insere o header no body (como já está na função)
+createHeader();
 
 app.innerHTML = `
   <main id="page-content"></main>
 `;
 
-// Primeira renderização
 renderRoute();
 
-// Escuta mudanças na hash (navegação)
 window.addEventListener("hashchange", renderRoute);

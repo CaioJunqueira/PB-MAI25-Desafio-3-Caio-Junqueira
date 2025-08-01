@@ -41,3 +41,51 @@
   border-bottom: 4px solid var(--secondary-dark-green);
   border-radius: 3px;
 }
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: var(--secondary-dark-green);
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+}
+
+@media (max-width: 1140px) {
+  .header {
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+
+  .header-nav {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--primary-white);
+    border-bottom: 1px solid var(--primary-stroke-gray);
+    gap: 20px;
+    padding: 20px 0;
+    z-index: 100;
+  }
+
+  .header-nav.show {
+    display: flex;
+  }
+
+  .nav-link {
+    padding: 12px 0;
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}

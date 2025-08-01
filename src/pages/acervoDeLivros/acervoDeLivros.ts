@@ -1,14 +1,16 @@
 import api from "../../services/axios";
 import { ConfirmModal } from "../../components/ConfirmModal/confirmModal";
 import { FormModal } from "../../components/FormModal/formModal";
-import { InfoModal } from "../../components/InfoModal/infoModal"; // ⬅️ Adicionado
+import { InfoModal } from "../../components/InfoModal/infoModal";
 import "./style.css";
 
 export function acervoDeLivros(): string {
   const table = `
-    <section>
-      <h1 class="title">Bem-vindo à biblioteca!</h1>
-      <p class="description">Conheça nosso acervo de livros.</p>
+    <section class="acervo-section">
+      <div class="title-container">
+        <h1 class="title">Bem-vindo à biblioteca!</h1>
+        <p class="description">Conheça nosso acervo de livros.</p>
+      </div>
 
       <table id="livros-table" class="book-table">
         <thead>
@@ -85,7 +87,6 @@ export function acervoDeLivros(): string {
 
           const tituloLivro = tr.querySelector(".livro-titulo")?.textContent || "Desconhecido";
 
-          // Excluir
           if (btn.classList.contains("excluir")) {
             const modal = new ConfirmModal(
               "Excluir livro",
@@ -106,18 +107,17 @@ export function acervoDeLivros(): string {
             return;
           }
 
-          // Editar
           if (btn.classList.contains("editar")) {
             try {
               const { data: livro } = await api.get(`/api/livros/${id}`);
               const content = `
                 <form id="edit-livro-form">
                   <label>Título do livro</label>
-                  <input type="text" id="titulo" class="input" value="${livro.titulo}" required />
+                  <input type="text" id="titulo" class="input-form" value="${livro.titulo}" required />
                   <label>Autor do livro</label>
-                  <input type="text" id="autor" class="input" value="${livro.autor}" required />
+                  <input type="text" id="autor" class="input-form" value="${livro.autor}" required />
                   <label>Ano de publicação</label>
-                  <input type="number" id="ano" class="input" value="${livro.anoPublicacao}" required />
+                  <input type="number" id="ano" class="input-form" value="${livro.anoPublicacao}" required />
                 </form>
               `;
 
@@ -146,7 +146,6 @@ export function acervoDeLivros(): string {
             return;
           }
 
-          // Emprestar
           if (btn.classList.contains("emprestar")) {
             try {
               const { data: usuarios } = await api.get("/api/usuarios");
@@ -157,7 +156,7 @@ export function acervoDeLivros(): string {
               const content = `
                 <form id="emprestar-livro-form">
                   <label for="usuarioId">Selecione o usuário</label>
-                  <select id="usuarioId" class="input form" required>
+                  <select id="usuarioId" class="input-form" required>
                     <option value="">Escolha um usuário</option>
                     ${options}
                   </select>
@@ -194,7 +193,6 @@ export function acervoDeLivros(): string {
             return;
           }
 
-          // Devolver
           if (btn.classList.contains("devolver")) {
             const modal = new ConfirmModal(
               "Devolver livro",

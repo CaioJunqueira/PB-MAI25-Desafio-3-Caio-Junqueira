@@ -7,10 +7,11 @@ import "./style.css";
 
 export function usuariosCadastrados(): string {
   const table = `
-    <section>
-      <h1 class="title">Usuários Cadastrados</h1>
-      <p class="description">Lista de todos os usuários registrados no sistema.</p>
-
+    <section class="usuarios-section">
+      <div class="title-container">
+        <h1 class="title">Usuários Cadastrados</h1>
+        <p class="description">Lista de todos os usuários registrados no sistema.</p>
+      </div>
       <table id="usuarios-table" class="user-table">
         <thead>
           <tr>
@@ -69,7 +70,6 @@ export function usuariosCadastrados(): string {
           )
           .join("");
 
-        // Delegação de eventos
         tbody.addEventListener("click", async (e) => {
           const target = e.target as HTMLElement;
           const btn = target.closest("button");
@@ -81,10 +81,11 @@ export function usuariosCadastrados(): string {
 
           if (!id || !nome) return;
 
-          // Ver livros emprestados
           if (btn.classList.contains("ver-livros")) {
             try {
-              const { data: livros } = await api.get(`/api/usuarios/${id}/livros-emprestados`);
+              const { data: livros } = await api.get(
+                `/api/usuarios/${id}/livros-emprestados`
+              );
 
               if (!livros || livros.length === 0) {
                 new InfoModal(
@@ -122,7 +123,6 @@ export function usuariosCadastrados(): string {
             return;
           }
 
-          // Excluir usuário
           if (btn.classList.contains("excluir")) {
             const modal = new ConfirmModal(
               "Excluir usuário",
@@ -155,7 +155,6 @@ export function usuariosCadastrados(): string {
             return;
           }
 
-          // Editar usuário
           if (btn.classList.contains("editar")) {
             try {
               const { data: usuario } = await api.get(`/api/usuarios/${id}`);
@@ -163,7 +162,7 @@ export function usuariosCadastrados(): string {
               const content = `
                 <form id="edit-usuario-form">
                   <label>Nome do usuário</label>
-                  <input type="text" id="nome" class="input form" value="${usuario.nome}" required />
+                  <input type="text" id="nome" class="input-form" value="${usuario.nome}" required />
                 </form>
               `;
 
@@ -171,9 +170,14 @@ export function usuariosCadastrados(): string {
                 `Edição de dados do usuário`,
                 content,
                 async () => {
-                  const nomeAtualizado = (document.getElementById("nome") as HTMLInputElement).value;
-                  await api.put(`/api/usuarios/${id}`, { nome: nomeAtualizado });
-                  tr.querySelector(".usuario-nome")!.textContent = nomeAtualizado;
+                  const nomeAtualizado = (
+                    document.getElementById("nome") as HTMLInputElement
+                  ).value;
+                  await api.put(`/api/usuarios/${id}`, {
+                    nome: nomeAtualizado,
+                  });
+                  tr.querySelector(".usuario-nome")!.textContent =
+                    nomeAtualizado;
                   new InfoModal(
                     "Usuário atualizado",
                     `Nome alterado para "${nomeAtualizado}"`,

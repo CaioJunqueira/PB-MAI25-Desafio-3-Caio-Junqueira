@@ -1,16 +1,38 @@
+.acervo-section {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+}
+
 .title {
   margin-bottom: 15px;
+  font-size: 24px;
+  text-align: start;
 }
 
 .description {
   margin-bottom: 20px;
-
+  text-align: start;
+  font-size: 16px;
 }
 
 .book-table {
-  width: 100%;
+  width: fit-content;
   border-collapse: collapse;
   margin-top: 1rem;
+  overflow-x: auto;
+}
+
+.book-table thead {
+  white-space: nowrap;
 }
 
 .book-table th,
@@ -18,25 +40,26 @@
   border: 1px solid var(--primary-stroke-gray);
   padding: 0.75rem;
   text-align: left;
+  font-size: 14px;
 }
 
 .book-table th {
   background-color: var(--primary-light-green);
   color: var(--primary-white);
   font-weight: 500;
-  font-size: 15px;
 }
 
 .book-table td {
   background-color: var(--primary-white);
   color: var(--primary-black);
   font-weight: 400;
-  font-size: 14px;
 }
 
 .action-buttons {
   display: flex;
-  gap: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
 }
 
 .action-button {
@@ -45,20 +68,23 @@
   justify-content: center;
   font-size: 14px;
   font-weight: 500;
-  width: 140px;
-  height: 38px;
+  min-width: 120px;
+  padding: 8px 10px;
+  height: auto;
   border-radius: 10px;
   background-color: var(--primary-light-green);
   color: var(--primary-white);
+  text-align: center;
+  transition: background-color 0.2s;
+}
 
-  &:hover {
-    background-color: var(--primary-dark-green);
-  }
+.action-button:hover {
+  background-color: var(--primary-dark-green);
 }
 
 .button-icon {
   width: 20px;
-  margin-right: 8px;
+  margin-right: 6px;
 }
 
 .button-icon.edit {
@@ -73,44 +99,103 @@
   background-color: var(--primary-white);
   border: 2px solid var(--primary-light-green);
   color: var(--primary-light-green);
+}
 
-  &:hover {
-    background-color: #f0ffc9;
-  }
+.action-button.editar:hover {
+  background-color: #f0ffc9;
 }
 
 .action-button.excluir {
   background-color: rgb(245, 8, 8);
+}
 
-  &:hover {
-    background-color: rgb(192, 0, 0);
-  }
+.action-button.excluir:hover {
+  background-color: rgb(192, 0, 0);
 }
 
 #edit-livro-form {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  max-width: 100%;
+
+  @media (max-width: 500px) {
+    width: 100%;
+  } 
 }
 
-.input {
-    font-family: 'Inter', sans-serif;
-    border-radius: 10px;
-    border: 1px solid #bebebe;
-    background: var(--primary-white);
-    width: 400px;
-    height: 38px;
-    outline: none;
-    padding: 10px 14px;
-    margin: 0px;
+.input-form {
+  font-family: 'Inter', sans-serif;
+  border-radius: 10px;
+  border: 1px solid #bebebe;
+  background: var(--primary-white);
+  width: 380px;
+  height: 38px;
+  outline: none;
+  padding: 10px 14px;
+  margin: 0;
+  box-sizing: border-box;
+}
 
-    &:focus{
-        border: 1px solid #bebebe;
-    }
+.input:focus {
+  border: 1px solid #bebebe;
+}
 
-    &::placeholder{
-        color: var(--primary-stroke-gray);
-        font-size: 14px;
-        font-weight: 400;
-    }
+.input::placeholder {
+  color: var(--primary-stroke-gray);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 20px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .action-button {
+    flex: 1 1 100%;
+    min-width: unset;
+    padding: 10px;
+    justify-content: center;
+  }
+
+  .button-icon {
+    margin-right: 4px;
+  }
+}
+
+@media (max-width: 500px) {
+  .book-table th,
+  .book-table td {
+    font-size: 12px;
+    padding: 0.5rem;
+  }
+
+  .input-form {
+    width: 100%;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .action-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 450px) {
+
+#edit-livro-form {
+    width: 90%;
+  }
+
+  .input-form {
+    width: 100%;
+  }
 }
